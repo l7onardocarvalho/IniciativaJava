@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class ListaExercicioQuarterbackRating {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o nome do Quarterback: ");
+        String nome = scanner.next();
+        System.out.println("Digite a quantidade de passes TENTADOS de " + nome + ": ");
+        double passT = scanner.nextDouble();
+        System.out.println("Digite a quantidade de passes COMPLETOS de " + nome + ": ");
+        double passC = scanner.nextDouble();
+        System.out.println("Digite a quantidade de JARDAS PASSADAS de " + nome + ": ");
+        double ydPass = scanner.nextDouble();
+        System.out.println("Digite a quantidade de PASSES PARA TOUCHDOWN de " + nome + ": ");
+        double passTD = scanner.nextDouble();
+        System.out.println("Digite a quantidade de PASSES INTERCEPTADOS de " + nome + ": ");
+        double passI = scanner.nextDouble();
+
+        double passPorcent = (((passC/passT)*100)-0.3)/0.2;
+        if(passPorcent>2.375){
+            passPorcent = 2.375;
+        } else if(passPorcent<0) {
+            passPorcent = 0;
+        }
+        double reasonYD = ((ydPass/passT)-3)/4;
+        if (reasonYD>2.375){
+            reasonYD = 2.375;
+        } else if (reasonYD<0) {
+            reasonYD = 0;
+        }
+        double reasonTD = (passTD/passT)/0.05;
+        if (reasonTD>2.375){
+            reasonTD = 2.375;
+        } else if (reasonTD<0) {
+            reasonTD = 0;
+        }
+        double reasonI = ((passI/passT)-0.095)/0.04;
+        if (reasonI>2.375){
+            reasonI = 2.375;
+        } else if(reasonI<0){
+            reasonI = 0;
+        }
+        double qbRating = ((passPorcent + reasonYD + reasonTD + reasonI)*100)/6;
+        System.out.println("O QB Rating do quarterback " + nome + "foi: " + qbRating);
+        }
+}
