@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class PostoDeGasolinaMelhorado {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double gasolina = 2.70;
+        double alcool = 1.90;
+        double resultado = 0;
+        double descontoG = 0;
+        double descontoA = 0;
+        double litros = 0;
+        System.out.println("Deseja abastecer Gasolina ou Álcool? [G/A]");
+        char resposta = scanner.next().charAt(0);
+            switch (resposta) {
+                case 'G':
+                    System.out.println("Quantos litros de GASOLINA deseja abastecer? ");
+                    litros = scanner.nextDouble();
+                    if (litros <= 25) {
+                        descontoG = litros * (gasolina * 0.03);
+                        resultado = (litros * gasolina) - descontoG;
+                        System.out.printf("Você abasteceu " + litros + "L de gasolina e ganhou de desconto: R$ %.2f %n", descontoG);
+                        System.out.printf("TOTAL A PAGAR: R$ %.2f %n ", resultado);
+                    } else {
+                        descontoG = litros * (gasolina * 0.05);
+                        resultado = (litros * gasolina) - descontoG;
+                        System.out.printf("Você abasteceu " + litros + "L de gasolina e ganhou de desconto: R$ %.2f %n", descontoG);
+                        System.out.printf("TOTAL A PAGAR: R$ %.2f %n", resultado);
+                    }
+                    break;
+                case 'A':
+                    System.out.println("Quantos litros de ÁLCOOL deseja abastecer? ");
+                    litros = scanner.nextDouble();
+                    if (litros <= 25) {
+                        descontoA = litros * (alcool * 0.02);
+                        resultado = (litros * alcool) - descontoA;
+                        System.out.printf("Você abasteceu " + litros + "L de álcool e ganhou de desconto: R$ %.2f %n", descontoA);
+                        System.out.printf("TOTAL A PAGAR: R$ %.2f %n", resultado);
+                    } else {
+                        descontoA = litros * (alcool * 0.04);
+                        resultado = (litros * alcool) - descontoA;
+                        System.out.printf("Você abasteceu " + litros + "L de álcool e ganhou de desconto: R$ %.2f %n", descontoA);
+                        System.out.printf("TOTAL A PAGAR: R$ %.2f %n", resultado);
+                    }
+                    break;
+                default:
+                    System.out.println("OPÇÃO INVÁLIDA!");
+            }
+    }
+}
